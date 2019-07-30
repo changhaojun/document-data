@@ -1,0 +1,100 @@
+
+1.Python数据类型：整数、浮点数、字符串、布尔值、空值None、列表、字典、元组等
+    注意：None不能理解为0，因为0是有意义的，而None只是一个特殊的空值；
+    列表：list  list = [1,2,3]
+        1.获取list的长度：len(list)
+        2.向list末尾添加元素：append(e)
+        3.向list的指定位置添加元素：insert(index,e)
+        4.删除list的末尾元素：pop()
+        5.删除指定位置的元素：pop(index)
+    元组：tuple  tuple = (1,2,3)
+        tuple一旦初始化就不能修改(tuple指向不变),在定义一个元素的tuple时必须添加逗号，如: t = (1,)
+    字典：dict  dict = {a: 1, b: 2}
+    Python判断变量的数据类型：isinstance(var,int)  第一个参数为变量，第二个参数为数据类型
+
+2.运算符：与、或、非（and、or、not）
+
+3.Python中可以把任意数据类型赋值给变量，同一个变量可以反复赋值，而且可以是不同的数据类型
+    这种变量本身类型不固定的语言称为动态语言，而静态语言在定义变量时必须指定变量类型，Java是静态语言；
+
+4.Python中的常量通常用大写变量名表示；
+
+5.encode和decode：
+    1.encode：编码  
+        将unicode编码转为utf-8编码：u'中文'.encode('utf-8') //'\xe4\xb8\xad\xe6\x96\x87'
+    2.decode：解码
+        将utf-8编码转为unicode编码：'abc'.decode('utf-8') //u'abc'
+
+6.range()函数：可以生成一个整数序列
+    range(5) //[0,1,2,3,4]
+    range(1,6) //[1,2,3,4,5]
+
+7.if语句：
+    if x>10:
+        print x
+    else:
+        print 'x<10'
+
+8.for...in:
+    for i in range(5):
+        print i
+
+9.while语句：只要条件成立就一直循环
+    while True:
+        print 'true'
+
+10.切片和迭代：
+    1.切片：
+        list = [1,2,3,4,5]
+        list[0:1] //[1]
+        list[:-1] //[1,2,3,4]
+    2.迭代：
+        tuple = (1,2,3)
+        for i in tuple:
+            print i
+
+11.列表生成式：
+    list = [i*i for i in range(1,11)] //[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+    list = [i*i for i in range(1,11) if i%2 == 0] //[4, 16, 36, 64, 100]
+    list = [m+n for m in 'ABC' for n in 'abc'] //['Aa', 'Ab', 'Ac', 'Ba', 'Bb', 'Bc', 'Ca', 'Cb', 'Cc']
+
+12.遍历dict:
+    dict = {'a': 1, 'b': 2, 'c': 3}
+    for key,value in dict.iteritems():
+        print key, ':', value
+
+13.Python 变量赋值：
+    a = 0, b = 1
+    a,b = b,a+b
+    print a,b  //1,1
+    a,b = b,a+b 先计算=右边的b和a+b的值，然后分别赋值给a,b
+
+14.map()、reduce():
+    1.
+        map()接收两个参数，一个是函数，另一个是序列，map将传入的函数作用于序列的每一个元素，返回一个新的list；
+        map(str,range(1,10)) //['1', '2', '3', '4', '5', '6', '7', '8', '9']
+    2.  
+        reduce()将传入的函数作用于序列，这个函数必须接受两个参数，reduce把结果和序列的下一个元素做累积
+        def f(x,y):
+            return int(x) + int(y)
+        reduce(f,'12345')  //15
+
+15.filter(): 过滤
+    接收两个参数，一个是函数，一个是序列，filter将传入的函数作用于序列的每一个元素，根据返回值是True或False决定保留还是放弃；
+    def is_odd(n):
+        return n%2 == 1
+    filter(is_odd,[1,2,5,7,8,9]) //[1,5,7,9]
+
+16.sorted(): 排序
+    1.sorted([1,5,2,4,9]) //[1,2,4,5,9]
+    2.自定义排序：
+        def _cmp(x,y):
+            if x > y:
+                return -1
+            elif x < y:
+                return 1
+            else:
+                return 0
+        sorted([1,5,2,4,9],_cmp) //[9,5,4,2,1]
+
+

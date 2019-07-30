@@ -1,0 +1,54 @@
+
+加载第三方库或从git上clone的react-native项目运行报错Command `run-android` unrecognized. Make sure that you have run `npm install` and that you are inside a react-native project.执行yarn add react-native-cli解决
+
+
+
+1.flexbox布局
+	flexDirection；'column/row' ,默认为'column' ,子元素沿着竖直轴/水平轴方向排列
+	justifyContent: 'flex-start/flex-end/center/space-around/space-between', 子元素沿着主轴的排列方向
+	alignItems: 'flex-start/flex-end/center/stretch', 子元素沿着次轴的排列方向
+	
+2.滚动容器
+	ScrollView: 加载所有的数据，适合显示数量不多的滚动元素;可以垂直和水平滚动
+	ListView: 显示垂直的长滚动列表，ListView优先渲染屏幕上可见的元素
+	FlatList:
+	属性：
+		默认垂直滚动且显示滚动条
+		horizontal={true} //水平滚动
+		vertical={true} //垂直滚动 
+		showsHorizontalScrollIndicator={true} //显示水平滚动条
+		showsVerticalScrollIndicator={true} //显示垂直滚动条
+	
+3.可点击的组件：TouchableOpacity
+	onPress属性接收点击事件的处理函数
+	onLongPress：长按属性
+	
+4.WebView使用的集中方式:
+	1.<WebView
+		source={{html: HTML}}
+		style={{}}
+	/>	
+	const HTML = `
+		<!DOCTYPE html>
+		<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta http-equiv="X-UA-Compatible" content="ie=edge">
+			<title>Document</title>
+		</head>
+		<body>
+			<div>122332</div>
+		</body>
+		</html>
+	`
+	2.<WebView
+		source={{uri: 'https://www.baidu.com'}}
+	/>
+	3.<WebView
+		source={require=('./test.html')}
+	/>
+	
+		
+		
+	
