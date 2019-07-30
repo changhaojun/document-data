@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mvvm</title>
+</head>
+<body>
+    <div id="app">
+        <ul id="todoList" v-if="todos.length > 0">
+            <li v-for="(todo,index) in todos" :id=`${todo.id}` @click='remove(index)'>{{todo.text}}</li>
+        </ul>
+        <input type="text" id="content" v-model="content">
+        <button id="confirm" @click='add'>确认</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                todos: [],
+                content: ''
+            },
+            methods: {
+                todo: function(id,text) {
+                    return {
+                        id,text
+                    }
+                },
+                add: function() {
+                    let id = Number(new Date());
+                    let text = this.content;
+                    let addTodo = this.todo(id,text);
+                    this.todos.unshift(addTodo);
+                    this.content = '';
+                },
+                remove: function(index) {
+                    this.todos.splice(index,1);
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

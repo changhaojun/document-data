@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mvc</title>
+</head>
+<body>
+    <ul id="todoList"></ul>
+    <input type="text" id="content">
+    <button id="confirm">确认</button>
+    <script>
+        (function() {
+            class Todo {
+                constructor(id,text='') {
+                    this.id = id;
+                    this.text = text;
+                }
+            }
+            let App = {
+                init() {
+                    this.todos = [];
+                    this.findDom();
+                    this.bindEvent();
+                    this.render(); 
+                },
+                findDom() {
+                    this.todoList = document.querySelector('#todoList');
+                    this.contentBox = document.querySelector('#content');
+                    this.confirm = document.querySelector('#confirm');
+                },
+                // 
+                bindEvent() {
+                    this.confirm.addEventListener('click',() => {
+                        this.add();
+                    })
+                    this.todoList.addEventListener('click',(event) => {
+                        this.remove(event)
+                    })
+                },
+                //
+                add() {
+                    let id = Number(new Date());
+                    let text = this.contentBox.value;
+                    let addTodo = new Todo(id,text);
+                    this.todos.unshift(addTodo); 
+                    this.render(); 
+                    this.contentBox.value = '';
+                },
+                remove(item) {
+                    let index = this.getItemIndex(item);
+                    this.todos.splice(index,1);
+                    this.render();
+                },
+                getItemIndex(e) {
+                    let index = '';
+                    let id = e.target.id;
+                    this.todos.forEach((todo,i) => {
+                        if(todo.id === Number(id)) {
+                            index = i;
+                        }
+                    })
+                    return index;
+                },
+                // 
+                render() {
+                    this.view();
+                },
+                view() {
+                    let fragment  = '';
+                    for(let i in this.todos) {
+                        fragment += `<li id=${this.todos[i].id}>${this.todos[i].text}</li>`;
+                    }
+                    this.todoList.innerHTML = fragment;
+                }
+            }
+            App.init();
+        })();
+    </script>
+</body>
+</html>
