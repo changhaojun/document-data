@@ -1,0 +1,7 @@
+
+MongoDB：
+	1.scada2.0 测试：username: 'scada2_user', password: 'finfosoft123', server: '121.42.253.149', port: '19910', db: 'scada2'
+	2.lanyue 测试：username: 'lanyue_user', password: 'finfosoft123', server: '121.42.253.149', port: '19901', db: 'lanyue'
+	
+mysql:
+	1.zhuanweihui: user: 'zwh_user', password: 'finfosoft123', host: '182.92.118.217', port: '3306', database: 'zhuangweihui'
