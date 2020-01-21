@@ -307,3 +307,6 @@
 　　　const max = Math.max.apply(null, arr);
 　　　2>. es6方法：
 　　　const max = Math.max(...arr);
+
+31.异步任务的内容：分为微任务和宏任务；微任务包括：promise...等，宏任务包括：setTimeout、setIntval...等。并且微任务的优先级高于宏任务
+	
