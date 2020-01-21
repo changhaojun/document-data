@@ -309,4 +309,8 @@
 　　　const max = Math.max(...arr);
 
 31.异步任务的内容：分为微任务和宏任务；微任务包括：promise...等，宏任务包括：setTimeout、setIntval...等。并且微任务的优先级高于宏任务
+
+32.Vue 在组件上使用v-model
+
+33.Vue 在组件上使用v-bind="$attrs"，$attrs是所有未注册属性的集合而且可以轻松实现内嵌深层组件的传值
 	
